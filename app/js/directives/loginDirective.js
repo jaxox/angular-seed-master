@@ -1,8 +1,15 @@
-'use strict';
+
 
 app.directive('loginDirective', function(){
     return {
-        templateUrl : 'partials/tpl/login.tpl.html'
-
-    }
+        restrict: 'E',
+        templateUrl : 'partials/tpl/login.tpl.html',
+        controller:function($scope, loginService){
+            $scope.login=function(user){
+                console.log('login function here');
+                loginService.login(user);
+            };
+        },
+        controllerAs:'loginCtrl'
+    };
 });
